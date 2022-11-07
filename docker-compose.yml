@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  auto_mysql:
+    image: mysql:8.0
+    container_name: "auto_mysql"
+    ports:
+        - 33060:3306
+    expose:
+        - '3306'
+    command: [--default-authentication-plugin=mysql_native_password]
+    environment: 
+        MYSQL_USER: "panelmysql"
+        MYSQL_PASSWORD: "panel--mysql"
+        MYSQL_ROOT_PASSWORD: "panel-123458"
+    volumes:
+        - ./panel_mysql/data:/var/lib/mysql
+        - ./panel_mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+  ss_app:
+    build:
+      context: ./noname-app
+    container_name: noname_app
+    ports:
+      - 8888:80
+    volumes:
+      - ./noname_app:/opt
+
