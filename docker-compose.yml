@@ -1,8 +1,8 @@
 version: '3.7'
 services:
-  auto_mysql:
+  noname_mysql:
     image: mysql:8.0
-    container_name: "auto_mysql"
+    container_name: "noname_mysql"
     ports:
         - 33060:3306
     expose:
@@ -15,12 +15,12 @@ services:
     volumes:
         - ./panel_mysql/data:/var/lib/mysql
         - ./panel_mysql/my.cnf:/etc/mysql/conf.d/my.cnf
-  ss_app:
+  noname_app:
     build:
       context: ./noname-app
     container_name: noname_app
     ports:
       - 8888:80
     volumes:
-      - ./noname_app:/opt
+      - ./noname-app:/opt
 

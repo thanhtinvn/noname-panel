@@ -1,2 +1,5 @@
 /cache/
 /config/development/
+
+/noname_mysql/data/*
+/noname_mysql/my.cnf/*
